@@ -1,0 +1,9 @@
+{
+  "NAME": "raspberrypi-gpio-manager-backend",
+  "VERSION": "1.0.0",
+  "VERSION_STATE": "ALPHA",
+  "VERSION_NAME": "control is everything",
+  "AUTHOR": "jk-powered.de",
+  "CONTRIBUTOR": [
+  ]
+}
