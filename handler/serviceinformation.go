@@ -9,6 +9,13 @@ import (
 	"raspberrypi-gpio-manager-backend/model"
 )
 
+// ServiceInfo godoc
+// @Summary Show service information
+// @Description get service information
+// @Accept  json
+// @Produce  json
+// @Success 200 {object} model.ServiceInfo
+// @Router / [get]
 func ServiceInfo(c *gin.Context) {
 
 	configFile, err := os.Open("config/config.serviceinformation.json")
