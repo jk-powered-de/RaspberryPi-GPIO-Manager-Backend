@@ -1,0 +1,59 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {
+            "name": "jk-powered.de",
+            "url": "https://jk-powered.de"
+        }
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "description": "get service information",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Show service information",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.ServiceInfo"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "model.ServiceInfo": {
+            "type": "object",
+            "properties": {
+                "AUTHOR": {
+                    "type": "string"
+                },
+                "CONTRIBUTOR": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "NAME": {
+                    "type": "string"
+                },
+                "VERSION": {
+                    "type": "string"
+                },
+                "VERSION_NAME": {
+                    "type": "string"
+                },
+                "VERSION_STATE": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

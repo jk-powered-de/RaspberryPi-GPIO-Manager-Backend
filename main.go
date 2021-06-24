@@ -3,13 +3,26 @@ package main
 import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"github.com/swaggo/files"
+	"github.com/swaggo/gin-swagger"
 	"log"
 	"raspberrypi-gpio-manager-backend/db"
+	"raspberrypi-gpio-manager-backend/docs"
 	"raspberrypi-gpio-manager-backend/handler"
 	"raspberrypi-gpio-manager-backend/model"
 )
 
+// @contact.name jk-powered.de
+// @contact.url https://jk-powered.de
+
 func main() {
+	docs.SwaggerInfo.Title = "raspberrypi-gpio-manager-backend"
+	docs.SwaggerInfo.Description = "This is a Webservice to manage raspberrypi gpio-pins"
+	docs.SwaggerInfo.Version = "1.0.0 ALPHA"
+	docs.SwaggerInfo.Host = "localhost:8080"
+	docs.SwaggerInfo.BasePath = "/"
+	docs.SwaggerInfo.Schemes = []string{"http"}
+
 	dbConfig := db.LoadDatabaseConfig()
 	db.ConnectDatabase(dbConfig)
 
@@ -65,6 +78,8 @@ func main() {
 		v1.DELETE("/jobs/:id", handler.DeleteJobByID)
 		v1.DELETE("/jobs/:id/named-pin", handler.DeleteJobByNamedGpioPinId)
 	}
+
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	err = r.Run()
 	if err != nil {

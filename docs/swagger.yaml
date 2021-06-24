@@ -1,0 +1,37 @@
+definitions:
+  model.ServiceInfo:
+    properties:
+      AUTHOR:
+        type: string
+      CONTRIBUTOR:
+        items:
+          type: string
+        type: array
+      NAME:
+        type: string
+      VERSION:
+        type: string
+      VERSION_NAME:
+        type: string
+      VERSION_STATE:
+        type: string
+    type: object
+info:
+  contact:
+    name: jk-powered.de
+    url: https://jk-powered.de
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: get service information
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.ServiceInfo'
+      summary: Show service information
+swagger: "2.0"
